@@ -20,4 +20,9 @@ public class CalculatorTest {
 	public void testMul() {
 		assertEquals(15, calculator.mul(5, 3));
 	}
+
+	@Test
+	public void testDiv() {
+		assertEquals(3, calculator.div(15, 5));
+	}
 }

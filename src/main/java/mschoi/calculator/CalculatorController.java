@@ -27,4 +27,9 @@ public class CalculatorController {
 	String mul(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
 		return String.valueOf(calculator.mul(a, b));
 	}
+
+	@RequestMapping("/div")
+	String div(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
+		return String.valueOf(calculator.div(a, b));
+	}
 }
