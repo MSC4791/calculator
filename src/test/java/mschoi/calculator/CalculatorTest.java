@@ -15,4 +15,9 @@ public class CalculatorTest {
 	public void testSub() {
 		assertEquals(-2, calculator.sub(3, 5));
 	}
+
+	@Test
+	public void testMul() {
+		assertEquals(15, calculator.mul(5, 3));
+	}
 }
