@@ -3,6 +3,9 @@ package mschoi.calculator;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+/**
+	CalculatorTest.java
+*/
 public class CalculatorTest {
 	private Calculator calculator = new Calculator();
 
