@@ -40,5 +40,37 @@ pipeline {
                 ])
             }
         }
+        stage("Package") {
+            steps {
+                sh './gradlew build'
+            }
+        }
+        stage("DockerBuild") {
+            steps {
+                sh 'docker build -t localhost:5000/comnet/calculator:latest .'
+            }
+        }
+        stage("DockerPush") {
+            steps {
+                sh 'docker push localhost:5000/comnet/calculator'
+            }
+        }
+        stage("DeployToStage") {
+            steps {
+                sh 'docker run -d --rm -p 8765:8090 --name calculator localhost:5000/comnet/calculator'
+            }
+        }
+        stage("AcceptanceTest") {
+            steps {
+                sleep 60
+                sh './acceptance_test.sh'
+            }
+        }
+    }
+    post {
+        always {
+            sh "docker stop calculator"
+            sh "docker rm calculator"
+        }
     }
 }
